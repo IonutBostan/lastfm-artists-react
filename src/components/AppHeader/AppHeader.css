@@ -1,0 +1,13 @@
+.app-header {
+  font-size: 288px;
+  color: #fff;
+  font-weight: 500;
+  font-family: Futura;
+  letter-spacing: -16px;
+  margin-top: -148px;
+  height: 278px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
