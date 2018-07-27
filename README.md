@@ -1,2 +1,1 @@
-# lastfm-artists-react
-lastfm-artists-react
+# React microsite using Last.fm's API
