@@ -1,7 +1,9 @@
 .artist-block {
+  position: relative;
   width: 240px;
   height: 240px;
   display: inline-block;
+  cursor: pointer;
 }
 .artist-block-image img {
   width: 240px;
@@ -49,10 +51,11 @@
   color: rgb(255, 255, 255, 1);
   font-family: Futura;
   z-index: 2;
-  line-height: 240px;
   text-align: center;
-  max-width: 230px;
-  width: 285px;
+  width: 230px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: 0.5s ease;
 }
 
@@ -62,9 +65,10 @@
   color: rgb(255, 255, 255, 0);
   font-family: Futura;
   z-index: 2;
-  line-height: 240px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  max-width: 230px;
-  width: 240px;
+  width: 230px;
   transition: 0.5s ease;
 }
