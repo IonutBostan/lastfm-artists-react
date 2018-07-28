@@ -9,11 +9,22 @@ import {
 
 const resource = "ARTIST_INFO";
 
+const formatArtistsInfoObject = artist => {
+  if (!artist) return {};
+
+  return {
+    name: artist.name,
+    bio: artist.bio && artist.bio.summary
+  };
+};
+
 export const artistInfoResource = combineReducers({
   artistInfo: createReducer(
     {},
     {
-      [c.ARTIST_INFO_SUCCESS]: (state, action) => action.payload.data
+      [c.ARTIST_INFO_REQUEST]: (state, action) => null,
+      [c.ARTIST_INFO_SUCCESS]: (state, action) =>
+        formatArtistsInfoObject(action.payload.artist)
     }
   ),
 
@@ -23,12 +34,10 @@ export const artistInfoResource = combineReducers({
 });
 
 export const topTracksResource = combineReducers({
-  topTracks: createReducer(
-    {},
-    {
-      [c.TOP_TRACKS_SUCCESS]: (state, action) => action.payload.data
-    }
-  ),
+  topTracks: createReducer([], {
+    [c.TOP_TRACKS_REQUEST]: (state, action) => [],
+    [c.TOP_TRACKS_SUCCESS]: (state, action) => action.payload.toptracks.track
+  }),
 
   isFetching: isFetchingReducer(c, resource),
   error: errorReducer(c, resource),
