@@ -3,7 +3,7 @@ import { c } from "../constants";
 import { getResourceByCountry } from "./actionsUtils";
 
 const getTopArtistsUrl = country =>
-  getResourceByCountry(country, "geo.gettopartists");
+  getResourceByCountry(country, "geo.gettopartists", 12);
 
 export const getTopArtists = country => {
   return {

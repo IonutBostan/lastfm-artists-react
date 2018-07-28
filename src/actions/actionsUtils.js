@@ -7,17 +7,18 @@ export const getResourceByMbid = (mbid, method, limit = null) =>
   getApiUrl() +
   "/2.0/?method=" +
   method +
-  "&format=json&mbid=?" +
+  "&format=json&mbid=" +
   mbid +
   "&api_key=" +
   getApiKey() +
   addLimit(limit);
 
-export const getResourceByCountry = (country, method) =>
+export const getResourceByCountry = (country, method, limit = null) =>
   getApiUrl() +
   "/2.0/?method=" +
   method +
   "&format=json&country=" +
   country +
   "&api_key=" +
-  getApiKey();
+  getApiKey() +
+  addLimit(limit);
