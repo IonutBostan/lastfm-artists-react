@@ -3,7 +3,8 @@ import { c } from "../constants";
 import { getResourceByMbid } from "./actionsUtils";
 
 const getArtistInfoUrl = mbid => getResourceByMbid(mbid, "artist.getinfo");
-const getTopTracksUrl = mbid => getResourceByMbid(mbid, "artist.gettoptracks");
+const getTopTracksUrl = mbid =>
+  getResourceByMbid(mbid, "artist.gettoptracks", 10);
 
 export const getArtistInfo = mbid => {
   return {
