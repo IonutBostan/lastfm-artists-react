@@ -3,13 +3,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { getArtistInfo, getTopTracks } from "../actions/artist.actions";
 import { getTopArtists } from "../actions/geo.actions";
+import Menu from "../components/Menu";
+import TopArtists from "../components/TopArtists";
 import { history } from "../history";
 import {
   getArtistInfoResource,
   getTopArtistsResource,
   getTopTracksResource
 } from "../reducers";
-import { AppHeader, ArtistBlock, ArtistDetails, Link } from "../ui";
+import { AppHeader, ArtistDetails } from "../ui";
 
 const countries = [
   { name: "Spain", id: "spain" },
@@ -19,14 +21,19 @@ const countries = [
 ];
 
 class Landing extends React.Component {
-  state = { details: false };
-  componentDidMount() {
-    let { country } = this.props.match.params;
-    this.props.getTopArtists(country);
+  state = { details: false, country: null };
+
+  static getDerivedStateFromProps(props, state) {
+    let { country } = props.match.params;
+
+    if (state.country !== country) {
+      props.getTopArtists(country);
+    }
+
+    return { ...state, country: country };
   }
 
   onMenuClick(country) {
-    this.props.getTopArtists(country);
     history.push("/" + country);
   }
 
@@ -35,6 +42,7 @@ class Landing extends React.Component {
     this.props.getTopTracks(mbid);
     this.setState({ ...this.state, details: true });
   }
+
   onModalClose() {
     this.setState({ ...this.state, details: false });
   }
@@ -78,42 +86,6 @@ class Landing extends React.Component {
         </div>
       </div>
     );
-  }
-}
-
-class Menu extends React.Component {
-  render() {
-    const { data, active, onMenuClick } = this.props;
-    if (!data || data.constructor !== Array) return null;
-
-    const links = data.filter(country => country.id !== active).map(country => (
-      <li key={country.id}>
-        <Link onClick={() => onMenuClick(country.id)}>{country.name}</Link>
-      </li>
-    ));
-
-    return (
-      <div className="menu">
-        <ul className="reset text-right">{links}</ul>
-      </div>
-    );
-  }
-}
-
-class TopArtists extends React.Component {
-  render() {
-    const { data, onArtistClick } = this.props;
-    if (!data || data.constructor !== Array) return null;
-
-    const artists = data.map(artist => (
-      <ArtistBlock
-        key={artist.mbid}
-        {...artist}
-        onClick={() => onArtistClick(artist.mbid)}
-      />
-    ));
-
-    return <div>{artists}</div>;
   }
 }
 
