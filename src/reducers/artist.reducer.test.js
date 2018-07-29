@@ -95,11 +95,23 @@ describe("topTracksResource", () => {
   it("should return the top tracks when called with SUCCESS action type good response", () => {
     const action = {
       type: c.TOP_TRACKS_SUCCESS,
-      payload: { toptracks: { track: [{ name: "Ziggy Stardust" }] } }
+      payload: {
+        toptracks: {
+          track: [
+            {
+              name: "Ziggy Stardust",
+              listeners: "722819",
+              "@attr": {
+                rank: "1"
+              }
+            }
+          ]
+        }
+      }
     };
     expect(topTracksResource([], action)).toEqual(
       expect.objectContaining({
-        topTracks: [{ name: "Ziggy Stardust" }]
+        topTracks: [{ name: "Ziggy Stardust", popularity: 1, rank: "1" }]
       })
     );
   });

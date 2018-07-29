@@ -13,6 +13,15 @@ const formatArtistsInfoObject = artist => {
   };
 };
 
+const formatTopTracks = tracks => {
+  const maxPlaycount = tracks.track[0].listeners;
+  return tracks.track.map(track => ({
+    name: track.name,
+    rank: track["@attr"].rank,
+    popularity: track.listeners / maxPlaycount
+  }));
+};
+
 export const artistInfoResource = combineReducers({
   artistInfo: createReducer(
     {},
@@ -40,7 +49,7 @@ export const topTracksResource = combineReducers({
     [c.TOP_TRACKS_REQUEST]: (state, action) => [],
     [c.TOP_TRACKS_SUCCESS]: (state, action) => {
       try {
-        return action.payload.toptracks.track;
+        return formatTopTracks(action.payload.toptracks);
       } catch (error) {
         console.log("topTracksResource TOP_TRACKS_SUCCESS " + error.toString());
         return [];
