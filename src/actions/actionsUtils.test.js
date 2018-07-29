@@ -16,7 +16,7 @@ describe("getApiUrl", () => {
 describe("getResourceByMbid", () => {
   it("should contain mbid", () => {
     expect(utils.getResourceByMbid(mbid, "artist.getinfo")).toContain(
-      "mbid=?5441c29d-3602-4898-b1a1-b77fa23b8e50"
+      "mbid=5441c29d-3602-4898-b1a1-b77fa23b8e50"
     );
   });
   it("should contain the method", () => {

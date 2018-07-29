@@ -9,7 +9,7 @@ describe("topArtistsResource", () => {
     };
     expect(topArtistsResource({}, action)).toEqual(
       expect.objectContaining({
-        topArtists: {}
+        topArtists: []
       })
     );
     expect(
@@ -24,13 +24,13 @@ describe("topArtistsResource", () => {
   it("should return the received object when called with SUCCESS action type", () => {
     const action = {
       type: c.TOP_ARTISTS_SUCCESS,
-      payload: { data: { name: "David Bowie" } }
+      payload: { topartists: { artist: [{ name: "David Bowie" }] } }
     };
     expect(
-      topArtistsResource({ topArtists: { name: "David" } }, action)
+      topArtistsResource({ topArtists: [{ name: "David" }] }, action)
     ).toEqual(
       expect.objectContaining({
-        topArtists: { name: "David Bowie" }
+        topArtists: [{ name: "David Bowie" }]
       })
     );
   });
