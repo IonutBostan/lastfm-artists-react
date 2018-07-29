@@ -42,6 +42,18 @@ describe("artistInfoResource", () => {
     );
   });
 
+  it("should return null when called with SUCCESS action type and malformatted response", () => {
+    const action = {
+      type: c.ARTIST_INFO_SUCCESS,
+      payload: null
+    };
+    expect(artistInfoResource([], action)).toEqual(
+      expect.objectContaining({
+        artistInfo: {}
+      })
+    );
+  });
+
   it("should return the initial state when called with FAILURE action type", () => {
     const action = {
       type: c.ARTIST_INFO_FAILURE,

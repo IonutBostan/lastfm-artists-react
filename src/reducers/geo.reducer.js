@@ -8,13 +8,6 @@ const getImage = (images, size) =>
   images && images.filter(image => image.size === size).shift()["#text"];
 
 const formatTopArtistsAray = topArtists => {
-  if (
-    !topArtists ||
-    !topArtists.artist ||
-    topArtists.artist.constructor !== Array
-  )
-    return [];
-
   return topArtists.artist.map(artist => ({
     name: artist.name,
     mbid: artist.mbid,

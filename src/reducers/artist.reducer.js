@@ -25,7 +25,7 @@ export const artistInfoResource = combineReducers({
           console.log(
             "artistInfoResource ARTIST_INFO_SUCCESS " + error.toString()
           );
-          return null;
+          return {};
         }
       }
     }
