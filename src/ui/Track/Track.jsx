@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import React from "react";
 import "./Track.css";
 
-export const Track = ({ rank, name, popularity }) => (
+const Track = ({ name, rank, popularity }) => (
   <div className="track">
     <div className="popularity" style={{ width: 343 * popularity }}>
       <span>
@@ -10,3 +11,11 @@ export const Track = ({ rank, name, popularity }) => (
     </div>
   </div>
 );
+
+Track.propTypes = {
+  name: PropTypes.string.isRequired,
+  rank: PropTypes.number.isRequired,
+  popularity: PropTypes.number.isRequired
+};
+
+export default Track;

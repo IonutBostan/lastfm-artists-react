@@ -1,13 +1,17 @@
 import cn from "classnames";
 import Parser from "html-react-parser";
+import PropTypes from "prop-types";
 import React from "react";
 import { Track } from "../";
 import "./ArtistDetails.css";
 
-export const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
+const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
   <div className={cn("modal-overlay", { active, "not-active": !active })}>
     <div className="artist-details">
-      <div className="close" onClick={() => onClose()}>
+      <div
+        className="close"
+        onClick={() => typeof onClose === "function" && onClose()}
+      >
         <CloseButtonSVG />
       </div>
       <div className="name">{name}</div>
@@ -24,6 +28,14 @@ export const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
     </div>
   </div>
 );
+
+ArtistDetails.propTypes = {
+  name: PropTypes.string,
+  bio: PropTypes.string,
+  // tracks: PropTypes.arrayOf(PropTypes.shape(Track.propTypes)).isRequired,
+  onClose: PropTypes.func,
+  active: PropTypes.bool
+};
 
 class TopTracks extends React.Component {
   render() {
@@ -71,3 +83,5 @@ const CloseButtonSVG = () => (
     </g>
   </svg>
 );
+
+export default ArtistDetails;

@@ -1,6 +1,11 @@
+import PropTypes from "prop-types";
 import React from "react";
 import "./AppHeader.css";
 
-export const AppHeader = ({ children }) => (
-  <h1 className="app-header">{children}</h1>
-);
+const AppHeader = ({ children }) => <h1 className="app-header">{children}</h1>;
+
+AppHeader.propTypes = {
+  children: PropTypes.string.isRequired
+};
+
+export default AppHeader;

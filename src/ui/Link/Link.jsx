@@ -1,9 +1,15 @@
-import cn from "classnames";
+import PropTypes from "prop-types";
 import React from "react";
 import "./Link.css";
 
-export const Link = ({ children, className, ...props }) => (
-  <a {...props} className={cn(className, "header-link")}>
+const Link = ({ children, ...props }) => (
+  <a {...props} className="header-link">
     {children}
   </a>
 );
+
+Link.propTypes = {
+  children: PropTypes.string.isRequired
+};
+
+export default Link;

@@ -17,7 +17,7 @@ const formatTopTracks = tracks => {
   const maxPlaycount = tracks.track[0].listeners;
   return tracks.track.map(track => ({
     name: track.name,
-    rank: track["@attr"].rank,
+    rank: Number(track["@attr"].rank),
     popularity: track.listeners / maxPlaycount
   }));
 };
