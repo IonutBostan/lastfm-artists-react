@@ -332,3 +332,5 @@ package-lock.json
 yarn.lock
 .env.local
 coverage/
+build/
+.DS_Store

@@ -49,7 +49,7 @@
   }
   .modal-overlay .artist-details {
     position: relative;
-    width: -webkit-fill-available;
+    width: stretch;
     height: 100%;
     overflow-x: auto;
     background-color: white;
