@@ -43,6 +43,34 @@
   transition: 0.5s 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .modal-overlay {
+    position: fixed;
+  }
+  .modal-overlay .artist-details {
+    position: relative;
+    width: -webkit-fill-available;
+    height: 100%;
+    overflow-x: auto;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+  .modal-overlay.active .artist-details {
+    opacity: 0.8;
+    transition: 0.5s 0.3s ease;
+  }
+  .artist-details .row {
+    flex-direction: column-reverse;
+  }
+  .artist-details .bio {
+    padding-bottom: 20px;
+  }
+}
+
 .artist-details .name {
   font-weight: 500;
   font-family: Futura;

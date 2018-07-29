@@ -20,3 +20,9 @@ body {
   filter: blur(10px);
   transition: 0.5s ease;
 }
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

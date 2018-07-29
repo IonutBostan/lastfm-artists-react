@@ -14,7 +14,7 @@ class TopArtists extends React.PureComponent {
       />
     ));
 
-    return <div>{artists}</div>;
+    return <div className="flex-wrap">{artists}</div>;
   }
 }
 

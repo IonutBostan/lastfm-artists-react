@@ -20,10 +20,10 @@ const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
       <div className="name">{name}</div>
       <div className="continer">
         <div className="row">
-          <div className="col col-7">
+          <div className="col col-12 col-md-7 col-lg-7 col-xl-7">
             <TopTracks data={tracks} />
           </div>
-          <div className="col col-5">
+          <div className="col col-12 col-md-5 col-lg-5 col-xl-5">
             <div className="bio">{Parser(bio || " ")}</div>
           </div>
         </div>

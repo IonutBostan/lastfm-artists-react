@@ -72,3 +72,10 @@
   width: 230px;
   transition: 0.5s ease;
 }
+
+@media (max-width: 768px) {
+  .artist-block-image .artist-name {
+    color: #fff;
+    filter: drop-shadow(0px 0px 5px #ffeb3b);
+  }
+}
