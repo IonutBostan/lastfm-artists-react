@@ -3,16 +3,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { getArtistInfo, getTopTracks } from "../actions/artist.actions";
 import { getTopArtists } from "../actions/geo.actions";
-import { AppHeader } from "../components/AppHeader/AppHeader";
-import { ArtistBlock } from "../components/ArtistBlock/ArtistBlock";
-import { ArtistDetails } from "../components/ArtistDetails/ArtistDetails";
-import { Link } from "../components/Link/Link";
 import { history } from "../history";
-import {
-  getArtistInfoResource,
-  getTopArtistsResource,
-  getTopTracksResource
-} from "../reducers";
+import { getArtistInfoResource, getTopArtistsResource, getTopTracksResource } from "../reducers";
+import { AppHeader } from "../ui/AppHeader/AppHeader";
+import { ArtistBlock } from "../ui/ArtistBlock/ArtistBlock";
+import { ArtistDetails } from "../ui/ArtistDetails/ArtistDetails";
+import { Link } from "../ui/Link/Link";
 
 const countries = [
   { name: "Spain", id: "spain" },
