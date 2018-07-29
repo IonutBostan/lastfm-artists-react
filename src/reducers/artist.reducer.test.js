@@ -111,7 +111,7 @@ describe("topTracksResource", () => {
     };
     expect(topTracksResource([], action)).toEqual(
       expect.objectContaining({
-        topTracks: [{ name: "Ziggy Stardust", popularity: 1, rank: "1" }]
+        topTracks: [{ name: "Ziggy Stardust", popularity: 1, rank: 1 }]
       })
     );
   });
