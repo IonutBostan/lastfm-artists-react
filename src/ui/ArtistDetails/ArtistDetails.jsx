@@ -1,7 +1,7 @@
 import cn from "classnames";
 import Parser from "html-react-parser";
 import React from "react";
-import { Track } from "../Track/Track";
+import { Track } from "../";
 import "./ArtistDetails.css";
 
 export const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (

@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import { getArtistInfo, getTopTracks } from "../actions/artist.actions";
 import { getTopArtists } from "../actions/geo.actions";
 import { history } from "../history";
-import { getArtistInfoResource, getTopArtistsResource, getTopTracksResource } from "../reducers";
-import { AppHeader } from "../ui/AppHeader/AppHeader";
-import { ArtistBlock } from "../ui/ArtistBlock/ArtistBlock";
-import { ArtistDetails } from "../ui/ArtistDetails/ArtistDetails";
-import { Link } from "../ui/Link/Link";
+import {
+  getArtistInfoResource,
+  getTopArtistsResource,
+  getTopTracksResource
+} from "../reducers";
+import { AppHeader, ArtistBlock, ArtistDetails, Link } from "../ui";
 
 const countries = [
   { name: "Spain", id: "spain" },
