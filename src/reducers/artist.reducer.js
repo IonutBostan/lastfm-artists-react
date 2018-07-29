@@ -1,11 +1,6 @@
 import { combineReducers } from "redux";
 import { c } from "../constants";
-import {
-  createReducer,
-  errorReducer,
-  expirationReducer,
-  isFetchingReducer
-} from "./reducerUtils";
+import { createReducer, errorReducer, isFetchingReducer } from "./reducerUtils";
 
 const resource = "ARTIST_INFO";
 
@@ -29,8 +24,7 @@ export const artistInfoResource = combineReducers({
   ),
 
   isFetching: isFetchingReducer(c, resource),
-  error: errorReducer(c, resource),
-  expiration: expirationReducer(c, resource)
+  error: errorReducer(c, resource)
 });
 
 export const topTracksResource = combineReducers({
@@ -40,8 +34,7 @@ export const topTracksResource = combineReducers({
   }),
 
   isFetching: isFetchingReducer(c, resource),
-  error: errorReducer(c, resource),
-  expiration: expirationReducer(c, resource)
+  error: errorReducer(c, resource)
 });
 
 //metodos

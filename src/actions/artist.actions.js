@@ -16,7 +16,6 @@ export const getArtistInfo = mbid => {
       ],
       endpoint: getArtistInfoUrl(mbid),
       method: "GET"
-      // bailout: state => checkBailout(getProductsResource(state), 0)
     }
   };
 };
@@ -27,7 +26,6 @@ export const getTopTracks = mbid => {
       types: [c.TOP_TRACKS_REQUEST, c.TOP_TRACKS_SUCCESS, c.TOP_TRACKS_FAILURE],
       endpoint: getTopTracksUrl(mbid),
       method: "GET"
-      // bailout: state => checkBailout(getProductsResource(state), 0)
     }
   };
 };

@@ -15,7 +15,6 @@ export const getTopArtists = country => {
       ],
       endpoint: getTopArtistsUrl(country),
       method: "GET"
-      // bailout: state => checkBailout(getProductsResource(state), 0)
     }
   };
 };
