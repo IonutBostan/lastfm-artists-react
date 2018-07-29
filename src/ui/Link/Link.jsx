@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./Link.css";
 
+/**
+ * Component for links
+ */
 const Link = ({ children, ...props }) => (
   <a {...props} className="header-link">
     {children}
@@ -9,6 +12,7 @@ const Link = ({ children, ...props }) => (
 );
 
 Link.propTypes = {
+  /** Link's text */
   children: PropTypes.string.isRequired
 };
 

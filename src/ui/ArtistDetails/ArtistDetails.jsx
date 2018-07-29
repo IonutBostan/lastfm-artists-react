@@ -5,6 +5,9 @@ import React from "react";
 import { Track } from "../";
 import "./ArtistDetails.css";
 
+/**
+ * ArtistDetails component the name, bio and the tracks of an artist
+ */
 const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
   <div className={cn("modal-overlay", { active, "not-active": !active })}>
     <div className="artist-details">
@@ -30,10 +33,24 @@ const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
 );
 
 ArtistDetails.propTypes = {
+  /** The artist's name */
   name: PropTypes.string,
+  /** The artist's bio summary */
   bio: PropTypes.string,
-  // tracks: PropTypes.arrayOf(PropTypes.shape(Track.propTypes)).isRequired,
+  /** The artist's top 10 tracks  */
+  tracks: PropTypes.arrayOf(
+    PropTypes.shape({
+      /** Track name */
+      name: PropTypes.string.isRequired,
+      /** Track rank */
+      rank: PropTypes.number.isRequired,
+      /** Track popularity from 0 to 1 calculated as currentSongListeners/firstSongListeners*/
+      popularity: PropTypes.number.isRequired
+    })
+  ),
+  /** onClick callback function */
   onClose: PropTypes.func,
+  /** Component status, used for animation */
   active: PropTypes.bool
 };
 
