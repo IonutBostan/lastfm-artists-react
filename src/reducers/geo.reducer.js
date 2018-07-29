@@ -5,10 +5,15 @@ import { createReducer, errorReducer, isFetchingReducer } from "./reducerUtils";
 const resource = "ARTIST_INFO";
 
 const getImage = (images, size) =>
-  images.filter(image => image.size === size).shift()["#text"];
+  images && images.filter(image => image.size === size).shift()["#text"];
 
 const formatTopArtistsAray = topArtists => {
-  if (!topArtists || topArtists.artist.constructor !== Array) return [];
+  if (
+    !topArtists ||
+    !topArtists.artist ||
+    topArtists.artist.constructor !== Array
+  )
+    return [];
 
   return topArtists.artist.map(artist => ({
     name: artist.name,
@@ -19,8 +24,16 @@ const formatTopArtistsAray = topArtists => {
 
 export const topArtistsResource = combineReducers({
   topArtists: createReducer([], {
-    [c.TOP_ARTISTS_SUCCESS]: (state, action) =>
-      formatTopArtistsAray(action.payload.topartists)
+    [c.TOP_ARTISTS_SUCCESS]: (state, action) => {
+      try {
+        return formatTopArtistsAray(action.payload.topartists);
+      } catch (error) {
+        console.log(
+          "topArtistsResource TOP_ARTISTS_SUCCESS " + error.toString()
+        );
+        return [];
+      }
+    }
   }),
 
   isFetching: isFetchingReducer(c, resource),

@@ -18,8 +18,16 @@ export const artistInfoResource = combineReducers({
     {},
     {
       [c.ARTIST_INFO_REQUEST]: (state, action) => null,
-      [c.ARTIST_INFO_SUCCESS]: (state, action) =>
-        formatArtistsInfoObject(action.payload.artist)
+      [c.ARTIST_INFO_SUCCESS]: (state, action) => {
+        try {
+          return formatArtistsInfoObject(action.payload.artist);
+        } catch (error) {
+          console.log(
+            "artistInfoResource ARTIST_INFO_SUCCESS " + error.toString()
+          );
+          return null;
+        }
+      }
     }
   ),
 
@@ -30,7 +38,14 @@ export const artistInfoResource = combineReducers({
 export const topTracksResource = combineReducers({
   topTracks: createReducer([], {
     [c.TOP_TRACKS_REQUEST]: (state, action) => [],
-    [c.TOP_TRACKS_SUCCESS]: (state, action) => action.payload.toptracks.track
+    [c.TOP_TRACKS_SUCCESS]: (state, action) => {
+      try {
+        return action.payload.toptracks.track;
+      } catch (error) {
+        console.log("topTracksResource TOP_TRACKS_SUCCESS " + error.toString());
+        return [];
+      }
+    }
   }),
 
   isFetching: isFetchingReducer(c, resource),
