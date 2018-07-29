@@ -30,7 +30,6 @@ class TopTracks extends React.Component {
     const { data } = this.props;
     if (!data || data.constructor !== Array) return null;
     if (data.length <= 0) return null;
-    const maxPlaycount = data[0].listeners;
 
     const tracks = data.map((track, index) => <Track key={index} {...track} />);
 
