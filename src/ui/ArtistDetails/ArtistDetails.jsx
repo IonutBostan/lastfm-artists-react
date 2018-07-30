@@ -11,10 +11,7 @@ import "./ArtistDetails.css";
 const ArtistDetails = ({ name, bio, tracks, onClose, active }) => (
   <div className={cn("modal-overlay", { active, "not-active": !active })}>
     <div className="artist-details">
-      <div
-        className="close"
-        onClick={() => typeof onClose === "function" && onClose()}
-      >
+      <div className="close" onClick={onClose}>
         <CloseButtonSVG />
       </div>
       <div className="name">{name}</div>
@@ -49,7 +46,7 @@ ArtistDetails.propTypes = {
     })
   ),
   /** onClick callback function */
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
   /** Component status, used for animation */
   active: PropTypes.bool
 };
@@ -57,8 +54,7 @@ ArtistDetails.propTypes = {
 class TopTracks extends React.Component {
   render() {
     const { data } = this.props;
-    if (!data || data.constructor !== Array) return null;
-    if (data.length <= 0) return null;
+    if (!data) return null;
 
     const tracks = data.map((track, index) => <Track key={index} {...track} />);
 
