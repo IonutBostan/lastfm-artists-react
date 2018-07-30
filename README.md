@@ -2,6 +2,14 @@
 
 ## How to run lastfm-artists-react
 
+### `npm install` or `yarn install`
+
+Install dependencies
+
+### `cp .env .env.local`
+
+Create an .env.local file and fill in your api hey from last.fm api
+
 ### `npm start` or `yarn start`
 
 Runs the app in development mode.<br>
