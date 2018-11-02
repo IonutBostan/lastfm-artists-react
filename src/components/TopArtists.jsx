@@ -1,21 +1,16 @@
 import React from "react";
 import { ArtistBlock } from "../ui";
 
-class TopArtists extends React.PureComponent {
-  render() {
-    const { data, onArtistClick } = this.props;
-    if (!data || data.constructor !== Array) return null;
-
-    const artists = data.map(artist => (
+const TopArtists = ({ data = [], onArtistClick }) => (
+  <div className="flex-wrap">
+    {data.map(artist => (
       <ArtistBlock
         key={artist.mbid}
         {...artist}
         onClick={() => onArtistClick(artist.mbid)}
       />
-    ));
+    ))}
+  </div>
+);
 
-    return <div className="flex-wrap">{artists}</div>;
-  }
-}
-
-export default TopArtists;
+export default React.memo(TopArtists);
