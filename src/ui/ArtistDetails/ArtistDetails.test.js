@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
 import ArtistDetails from "./ArtistDetails";
+import TopTracks from "./TopTracks";
 
 describe("ArtistDetails", () => {
   const component = shallow(
@@ -27,7 +28,7 @@ describe("ArtistDetails", () => {
     expect(component.find(".name").text()).toBe("David Bowie");
   });
   it("should contain a <TopTracks /> component", () => {
-    expect(component.find("TopTracks").html().length).toBeGreaterThan(0);
+    expect(component.find(TopTracks).render()).toHaveLength(10);
   });
 
   const artistDetailsWithoutTracks = shallow(
@@ -38,7 +39,15 @@ describe("ArtistDetails", () => {
       name="David Bowie"
     />
   );
+  console.log(component.find(TopTracks).render().length);
+  console.log(
+    component
+      .find(TopTracks)
+      .children()
+      .getElements()
+  );
+
   it("should contain the artist name", () => {
-    expect(artistDetailsWithoutTracks.find("TopTracks").html().length).toBe(0);
+    expect(artistDetailsWithoutTracks.find(TopTracks).render()).toHaveLength(0);
   });
 });

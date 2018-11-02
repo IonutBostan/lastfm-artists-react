@@ -4,14 +4,12 @@ import { history } from "./history";
 import Landing from "./pages/Landing";
 
 const App = () => (
-  <React.Fragment>
-    <Router history={history}>
-      <Switch>
-        <Route exact path="/:country" component={Landing} />
-        <Redirect to="/spain" />
-      </Switch>
-    </Router>
-  </React.Fragment>
+  <Router history={history}>
+    <Switch>
+      <Route exact path="/:country" component={Landing} />
+      <Redirect to="/spain" />
+    </Switch>
+  </Router>
 );
 
 export default App;
