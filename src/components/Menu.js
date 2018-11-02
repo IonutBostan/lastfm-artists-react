@@ -1,23 +1,19 @@
 import React from "react";
-import { Link } from "../ui";
+// import { Link } from "../ui";
+import { Link } from "react-router-dom";
 
-class Menu extends React.PureComponent {
-  render() {
-    const { data, active, onMenuClick } = this.props;
-    if (!data || data.constructor !== Array) return null;
+const Menu = ({ data = [], active, onMenuClick }) => (
+  <div className="menu">
+    <ul className="reset text-right">
+      {data.filter(country => country.id !== active).map(country => (
+        <li key={country.id}>
+          <Link to={country.id} className="header-link">
+            {country.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-    const links = data.filter(country => country.id !== active).map(country => (
-      <li key={country.id}>
-        <Link onClick={() => onMenuClick(country.id)}>{country.name}</Link>
-      </li>
-    ));
-
-    return (
-      <div className="menu">
-        <ul className="reset text-right">{links}</ul>
-      </div>
-    );
-  }
-}
-
-export default Menu;
+export default React.memo(Menu);

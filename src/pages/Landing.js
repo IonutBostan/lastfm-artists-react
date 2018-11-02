@@ -1,11 +1,10 @@
 import cn from "classnames";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getArtistInfo, getTopTracks } from "../actions/artist.actions";
 import { getTopArtists } from "../actions/geo.actions";
 import Menu from "../components/Menu";
 import TopArtists from "../components/TopArtists";
-import { history } from "../history";
 import {
   getArtistInfoResource,
   getTopArtistsResource,
@@ -20,74 +19,61 @@ const countries = [
   { name: "Germany", id: "germany" }
 ];
 
-class Landing extends React.Component {
-  state = { details: false, country: null };
-
-  static getDerivedStateFromProps(props, state) {
-    let { country } = props.match.params;
-
-    if (state.country !== country) {
-      props.getTopArtists(country);
-    }
-
-    return { ...state, country: country };
+const Landing = ({
+  topArtistsResource,
+  topTracksResource,
+  artistInfoResource,
+  getArtistInfo,
+  getTopTracks,
+  getTopArtists,
+  match: {
+    params: { country }
   }
+}) => {
+  let [selectedArtist, setSelectedArtist] = useState(null);
 
-  onMenuClick(country) {
-    history.push("/" + country);
-  }
+  useEffect(
+    () => {
+      if (selectedArtist) {
+        getArtistInfo(selectedArtist);
+        getTopTracks(selectedArtist);
+      }
+    },
+    [selectedArtist]
+  );
 
-  onArtistClick(mbid) {
-    this.props.getArtistInfo(mbid);
-    this.props.getTopTracks(mbid);
-    this.setState({ ...this.state, details: true });
-  }
+  useEffect(
+    () => {
+      getTopArtists(country);
+    },
+    [country]
+  );
 
-  onModalClose() {
-    this.setState({ ...this.state, details: false });
-  }
-
-  render() {
-    let { country } = this.props.match.params;
-    let {
-      topArtistsResource,
-      topTracksResource,
-      artistInfoResource
-    } = this.props;
-    let { topArtists } = topArtistsResource;
-    let { topTracks } = topTracksResource;
-    let { artistInfo } = artistInfoResource;
-
-    return (
-      <div>
-        <div
-          className={cn("container landing-container", {
-            blur: this.state.details
-          })}
-        >
-          <AppHeader>{country}</AppHeader>
-          <Menu
-            data={countries}
-            active={country}
-            onMenuClick={this.onMenuClick.bind(this)}
-          />
-          <TopArtists
-            data={topArtists}
-            onArtistClick={this.onArtistClick.bind(this)}
-          />
-        </div>
-        <div className="modal-container">
-          <ArtistDetails
-            active={this.state.details}
-            {...artistInfo}
-            tracks={topTracks}
-            onClose={this.onModalClose.bind(this)}
-          />
-        </div>
+  return (
+    <div>
+      <div
+        className={cn("container landing-container", {
+          blur: selectedArtist
+        })}
+      >
+        <AppHeader>{country}</AppHeader>
+        <Menu data={countries} active={country} />
+        <TopArtists
+          data={topArtistsResource.topArtists}
+          onArtistClick={mbid => setSelectedArtist(mbid)}
+        />
       </div>
-    );
-  }
-}
+      <div className="modal-container">
+        <ArtistDetails
+          active={Boolean(selectedArtist)}
+          {...artistInfoResource.artistInfo}
+          tracks={topTracksResource.topTracks}
+          onClose={() => setSelectedArtist(undefined)}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default connect(
   store => ({
