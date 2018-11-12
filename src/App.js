@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, Router, Switch } from "react-router";
 import { history } from "./history";
-import Landing from "./pages/Landing";
+import { Landing } from "./views";
 
 const App = () => (
   <Router history={history}>

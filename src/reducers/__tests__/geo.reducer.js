@@ -1,5 +1,5 @@
-import { c } from "../constants";
-import { topArtistsResource } from "./geo.reducer";
+import { c } from "../../constants";
+import { topArtistsResource } from "../geo.reducer";
 
 describe("topArtistsResource", () => {
   it("should return the initial state when called with REQUEST action type", () => {

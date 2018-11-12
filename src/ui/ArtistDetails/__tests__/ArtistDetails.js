@@ -1,14 +1,14 @@
 import { shallow } from "enzyme";
 import React from "react";
-import ArtistDetails from "./ArtistDetails";
-import TopTracks from "./TopTracks";
+import ArtistDetails from "../ArtistDetails";
+import TopTracks from "../TopTracks";
 
 describe("ArtistDetails", () => {
   const component = shallow(
     <ArtistDetails
       onClose={() => {}}
       active={true}
-      bio="David Bowie (b. David Robert Jones on 8th January 1947 in Brixton, London, UK, d. 10th January 2016 in New York, USA) was an English rock singer, songwriter, musician, and actor. Active during six decades of popular music and frequently reinventing his music and image, Bowie is widely regarded as an innovator, particularly for his work in the 1970s. Shortly after releasing his 25th studio album Blackstar, it was announced Bowie died on 10 January 2016, following an eighteen-month battle with cancer. <a href=&quot;https://www.last.fm/music/David+Bowie&quot;>Read more on Last.fm</a>"
+      bio='David Bowie (b. David Robert Jones on 8th January 1947 in Brixton, London, UK, d. 10th January 2016 in New York, USA) was an English rock singer, songwriter, musician, and actor. Active during six decades of popular music and frequently reinventing his music and image, Bowie is widely regarded as an innovator, particularly for his work in the 1970s. Shortly after releasing his 25th studio album Blackstar, it was announced Bowie died on 10 January 2016, following an eighteen-month battle with cancer. <a href="https://www.last.fm/music/David+Bowie">Read more on Last.fm</a>'
       name="David Bowie"
       tracks={[
         { name: "Ziggy Stardust", rank: 1, popularity: 1 },
@@ -35,7 +35,7 @@ describe("ArtistDetails", () => {
     <ArtistDetails
       onClose={() => {}}
       active={true}
-      bio="David Bowie (b. David Robert Jones on 8th January 1947 in Brixton, London, UK, d. 10th January 2016 in New York, USA) was an English rock singer, songwriter, musician, and actor. Active during six decades of popular music and frequently reinventing his music and image, Bowie is widely regarded as an innovator, particularly for his work in the 1970s. Shortly after releasing his 25th studio album Blackstar, it was announced Bowie died on 10 January 2016, following an eighteen-month battle with cancer. <a href=&quot;https://www.last.fm/music/David+Bowie&quot;>Read more on Last.fm</a>"
+      bio='David Bowie (b. David Robert Jones on 8th January 1947 in Brixton, London, UK, d. 10th January 2016 in New York, USA) was an English rock singer, songwriter, musician, and actor. Active during six decades of popular music and frequently reinventing his music and image, Bowie is widely regarded as an innovator, particularly for his work in the 1970s. Shortly after releasing his 25th studio album Blackstar, it was announced Bowie died on 10 January 2016, following an eighteen-month battle with cancer. <a href="https://www.last.fm/music/David+Bowie">Read more on Last.fm</a>'
       name="David Bowie"
     />
   );

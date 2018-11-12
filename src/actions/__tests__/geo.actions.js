@@ -1,4 +1,4 @@
-import { getTopArtists } from "./geo.actions";
+import { getTopArtists } from "../geo.actions";
 
 const country = "spain";
 describe("getTopArtistsUrl", () => {

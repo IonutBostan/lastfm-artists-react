@@ -1,5 +1,5 @@
 import React from "react";
-import { ArtistBlock } from "../ui";
+import { ArtistBlock } from "../../ui";
 
 const TopArtists = ({ data = [], onArtistClick }) => (
   <div className="flex-wrap">
