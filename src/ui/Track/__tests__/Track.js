@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import Track from "./Track";
+import Track from "../Track";
 
 describe("Track", () => {
   const component = shallow(

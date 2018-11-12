@@ -334,3 +334,4 @@ yarn.lock
 coverage/
 build/
 .DS_Store
+.env.test

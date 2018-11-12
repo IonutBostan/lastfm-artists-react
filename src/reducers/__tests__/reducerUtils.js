@@ -3,7 +3,7 @@ import {
   errorReducer,
   expirationReducer,
   isFetchingReducer
-} from "./reducerUtils";
+} from "../reducerUtils";
 
 export const c = {
   TEST_REQUEST: "TEST_REQUEST",
