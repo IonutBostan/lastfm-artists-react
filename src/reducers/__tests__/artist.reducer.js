@@ -1,5 +1,5 @@
-import { c } from "../constants";
-import { artistInfoResource, topTracksResource } from "./artist.reducer";
+import { c } from "../../constants";
+import { artistInfoResource, topTracksResource } from "../artist.reducer";
 
 describe("artistInfoResource", () => {
   it("should return null when called with REQUEST action type", () => {

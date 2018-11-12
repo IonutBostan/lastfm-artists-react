@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import AppHeader from "./AppHeader";
+import AppHeader from "../AppHeader";
 
 describe("AppHeader", () => {
   const component = shallow(<AppHeader>spain</AppHeader>);

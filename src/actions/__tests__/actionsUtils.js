@@ -1,4 +1,4 @@
-import * as utils from "./actionsUtils";
+import * as utils from "../actionsUtils";
 
 const mbid = "5441c29d-3602-4898-b1a1-b77fa23b8e50";
 describe("getApiKey", () => {
