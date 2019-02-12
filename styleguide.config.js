@@ -1,4 +1,5 @@
 module.exports = {
+  webpackConfig: require('./node_modules/react-scripts/config/webpack.config.js'),
   components: "src/ui/**/[A-Z]*.jsx",
   template: {
     head: {
